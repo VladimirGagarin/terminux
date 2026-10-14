@@ -1,0 +1,43 @@
+:root {
+  --term-bg: #0d1017;
+  --term-fg: #d7dde8;
+  --term-dim: #6b7686;
+  --term-green: #5af78e;
+  --term-blue: #57b0ff;
+  --term-red: #ff6b6b;
+  --term-yellow: #f3e391;
+  --term-cyan: #6fd3e0;
+  --term-magenta: #d16d9e;
+  --chrome: #191d26;
+  --chrome-2: #141821;
+  --border: #262c38;
+  --accent: #5af78e;
+
+  --mono: ui-monospace, "Cascadia Mono", "SFMono-Regular", "JetBrains Mono",
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--term-fg);
+  background: radial-gradient(1200px 640px at 72% -12%, #1b2740, #070a0f 62%);
+  overflow: hidden;
+}
