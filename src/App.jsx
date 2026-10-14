@@ -34,7 +34,7 @@ export default function App() {
   const [fs] = useState(() => loadFileSystem())
   const manager = useWindowManager()
   const progress = useProgress()
-  const [tabs, setTabs] = useState(() => [{ id: 1, title: 'user' }])
+  const [tabs, setTabs] = useState(() => [{ id: 1, title: progress.username }])
   const [activeId, setActiveId] = useState(1)
   const [renamingId, setRenamingId] = useState(null)
   const [panelVisible, setPanelVisible] = useState(false)
@@ -114,12 +114,12 @@ export default function App() {
       return
     }
     const id = nextIdRef.current++
-    setTabs([...tabs, { id, title: 'user' }])
+    setTabs([...tabs, { id, title: progress.username }])
     setActiveId(id)
     recordTab()
     if (tabs.length + 1 >= 3) announce('multitasker')
     if (tabs.length + 1 >= MAX_TABS) announce('maxed')
-  }, [tabs, flashToast, announce])
+  }, [tabs, flashToast, announce, progress.username])
 
   const closeTab = useCallback(
     (id) => {

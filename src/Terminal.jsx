@@ -34,6 +34,8 @@ const SECRETS = new Set(['coffee', 'hack', 'matrix', 'cowsay', 'hello', '42', 's
 
 const SHELL_PASSTHROUGH = new Set(['games', 'apps', 'panel', 'dock'])
 
+const HOME = '/home/user'
+
 const achievementRows = (def) => [
   { text: '', tone: 'default' },
   { text: '  ★ achievement unlocked  ', tone: 'achieve', inline: true },
@@ -96,7 +98,7 @@ const toneClass = (tone) => (tone === 'default' ? '' : `t-${tone}`)
 
 export default function Terminal({ fs, tabId, active, username, onTitle, onExit, onOpenApp, persistFs, onTogglePanel, ref }) {
   const [lines, setLines] = useState(() => toDisplayLines(buildWelcome(getProgress())))
-  const [cwd, setCwd] = useState('/home/user')
+  const [cwd, setCwd] = useState(HOME)
   const [history, setHistory] = useState([])
   const [caret, setCaret] = useState(0)
   const [focused, setFocused] = useState(false)
@@ -118,8 +120,8 @@ export default function Terminal({ fs, tabId, active, username, onTitle, onExit,
   }))
 
   useEffect(() => {
-    onTitle(tabId, basename(cwd))
-  }, [cwd, tabId, onTitle])
+    onTitle(tabId, cwd === HOME ? username || 'user' : basename(cwd))
+  }, [cwd, tabId, onTitle, username])
 
   useEffect(() => {
     activeRef.current = active
