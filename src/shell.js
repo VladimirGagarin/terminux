@@ -612,7 +612,7 @@ export function runCommand(input, session, fs) {
     }
     case 'hello': {
       out.push({ text: 'Hello there, ', tone: 'default', inline: true })
-      out.push({ text: 'user', tone: 'green', inline: true })
+      out.push({ text: session.progress?.username || 'user', tone: 'green', inline: true })
       out.push(line('! Type `tour` if you want the grand welcome.', 'default'))
       break
     }
